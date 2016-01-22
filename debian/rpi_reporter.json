@@ -1,0 +1,4 @@
+{
+	"off_auto_update_url":	"https://some.server.com/rpi_reporter/{MAC}.json",
+	"ssl_verify":		true
+}

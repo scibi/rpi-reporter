@@ -1,0 +1,14 @@
+[Unit]
+Description=RPi Reporter
+After=network.target
+
+[Service]
+Type=simple
+User=rpi_reporter
+Group=nogroup
+#Restart=always
+ExecStart=/usr/bin/rpi_reporter /etc/rpi_reporter.json
+
+[Install]
+WantedBy=multi-user.target
+

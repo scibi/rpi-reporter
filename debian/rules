@@ -4,8 +4,11 @@
 # Fri, 22 Jan 2016 23:11:55 +0100
 export PYBUILD_NAME=rpi-reporter
 %:
-	dh $@ --with python2 --buildsystem=pybuild
+	dh $@ --with python2 --buildsystem=pybuild --with systemd
 
 override_dh_auto_install:
-	python setup.py install --root=debian/rpi-reporter --install-layout=deb --install-lib=/usr/share/rpi-reporter --install-scripts=/usr/share/rpi-reporter
+	python setup.py install --root=debian/rpi-reporter --install-layout=deb --install-lib=/usr/share/rpi-reporter --install-scripts=/usr/share/rpi-reporter/bin
+	mv debian/rpi-reporter/usr/share/rpi-reporter/bin/rpi_reporter debian/rpi-reporter/usr/share/rpi-reporter/reporter
+	rmdir debian/rpi-reporter/usr/share/rpi-reporter/bin
+	install -D -m 0644 debian/rpi_reporter.json debian/rpi-reporter/etc/rpi_reporter.json
 override_dh_auto_build:
