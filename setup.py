@@ -23,6 +23,7 @@ setuptools.setup(
         'six',
         'statsd',
         'w1thermsensor',
+        'pyserial',
     ],
     entry_points={
         'console_scripts': ['rpi_reporter=rpi_reporter.main:main'],
